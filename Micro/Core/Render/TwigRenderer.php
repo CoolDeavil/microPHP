@@ -50,7 +50,8 @@ class TwigRenderer implements RenderInterface
     {
         setlocale(LC_ALL, Session::get('LOCALE'));
         $params['app_tittle']= APP_TITTLE;
-        $params['now']= utf8_encode($this->footDate(Session::get('ACTIVE_LANG')));
+        $params['now']= utf8_encode('Working Locally');
+//        $params['now']= utf8_encode($this->footDate(Session::get('ACTIVE_LANG')));
         $params['APP_MODE']=BUILD_RELEASE?'production':'development';
         $template=null;
 

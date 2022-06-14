@@ -1,6 +1,7 @@
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
 exports.filters = () => {
     return [
          // Parse Javascript Code
@@ -13,16 +14,28 @@ exports.filters = () => {
                 ],
             exclude: /node_modules/,
         },
+        // parse VUE files
+        {
+            test: /\.vue$/,
+            loader: "vue-loader",
+            options: {
+                loaders: {
+                    // https://vue-loader.vuejs.org/guide/scoped-css.html#mixing-local-and-global-styles
+                    css: ['vue-style-loader', {
+                        loader: 'css-loader',
+                    }],
+                    js: [
+                        'babel-loader',
+                    ],
+                },
+                cacheBusting: true,
+            },
+        },
         // Parse Styles
         {
             test: /\.(sa|sc|c)ss$/,
             use: [
-                {
-                    loader: MiniCssExtractPlugin.loader
-                },
-                {
-                    loader: "css-loader",
-                },
+                MiniCssExtractPlugin.loader, "css-loader","sass-loader",
                 {
                     loader: "postcss-loader",
                     options: {
@@ -37,7 +50,7 @@ exports.filters = () => {
                         sourceMap: true,
                         implementation: require("sass")
                     }
-                }
+                },
             ]
         },
         // Parse Images

@@ -7,7 +7,7 @@ use API\Core\App\{
     Dispatcher,
     Micro
 };
-use API\Controllers\{ MicroController};
+use API\Controllers\{CheckItController, MicroController};
 use API\Core\Database\Database;
 use API\Core\Render\{
     TwigRenderer,
@@ -85,8 +85,17 @@ return [
         return new MicroController(
             $router,
             $render,
-            new Validator($ioc),
-            new GeneralRepository(Database::getInstance())
+            new Validator($ioc)
+        );
+    },
+    CheckItController::class => function ($args, ContainerInterface $ioc ){
+        extract($args);
+        /** @var $router RouterInterface */
+        /** @var $render RenderInterface */
+        return new CheckItController(
+            $router,
+            $render,
+            new Validator($ioc)
         );
     },
     ScriptLoader::class => function(){

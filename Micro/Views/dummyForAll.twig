@@ -1,0 +1,32 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+    <style>
+        p:first-letter {
+            font-size: 2rem;
+            color: #006d6d;;
+        }
+        strong {
+            color: orangered;
+            font-weight: bolder;
+        }
+    </style>
+{% endblock head %}
+
+{% block content %}
+    <div class="container appContent" >
+        <div class="sectionSeparator"></div>
+        <div class="title">Website<small>I am just a dummy page for content</small></div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <p>You wanted <strong> {{ from }}</strong> but the documentation is behind... Take a look at the code at GitHUB, all code is documented and easy to read and follows the PSR-2: Coding Style Guide.</p>
+                <p>There is a controller ready to go in the pipeline as son as you have your database set up (sqlite memory, sqlite, mySql), those will guide you on the cool things integrated in this
+                Framework. And is about the crud  capabilities embedded on the router generating a complete CRUD set paths for a service.</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
+

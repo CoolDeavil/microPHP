@@ -13,13 +13,21 @@ $userID  = 0;
 
 
 $nav->link('MICRO1', 'Micro.index', 'fa-cannabis');
-$nav->link('MICRO2', 'Micro.allGadgets', 'fa-cogs');
+//$nav->link('MICRO2', 'checkItController.index', 'fa-cogs');
 
 $nav->drop('DROPDOWN')
-    ->entry('DEMO1', 'Micro.showRoutes','fa-star')
-    ->entry('DEMO1', 'Micro.autocomplete','fa-cogs')
-    ->entry('DEMO2', 'Micro.convertor','fa-star')
-    ->entry('DEMO3', 'Micro.countries','fa-car');
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-star',['demo'=>'Models'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Views'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Routing'])
+    ->entry('DEMO3', 'Micro.showWebPage','fa-car',['demo'=>'Helpers']);
+
+$nav->drop('DROPDOWN')
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-star',['demo'=>'Models'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Views'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Routing'])
+    ->entry('DEMO3', 'Micro.showWebPage','fa-car',['demo'=>'Helpers']);
 
 $nav->admin()
     ->entry('REGISTER', 'authUserService.create', 'fa-user-plus', [],'GUEST')

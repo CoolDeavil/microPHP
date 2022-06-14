@@ -5,6 +5,6 @@ Vagrantfile
 node_modules/
 public/
 package-lock.json
-composer.json
+composer.lock
 vendor/
 Micro/logs/
