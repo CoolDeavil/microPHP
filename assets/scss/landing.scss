@@ -1,17 +1,17 @@
 
 
 .circle {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   background: url(../images/Onion.png);
-background-size: cover;
-float: right;
+background-size: contain;
+float: left;
 shape-outside: circle();
 margin: 40px 20px 20px 0;
 }
 .mvc {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   background: url(../images/mvc_small.jpg);
 background-size: contain;
 float: left;

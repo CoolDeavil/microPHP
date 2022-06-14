@@ -10,18 +10,27 @@ $appText = [
 
 
 
-    'MICRO1' => "Inicio",
-    'MICRO2' => "Sobre",
-    'MICRO3' => "Exemplos",
+    'MICRO1' => "Home",
+    'MICRO2' => "About",
+    'MICRO3' => "Demos",
 
-    'DEMO1' => "Demo One",
-    'DEMO2' => "Demo Two",
-    'DEMO3' => "Demo Tree",
-    'DROPDOWN' => 'Demos',
+    'DEMO1' => "Controllers",
+    'DEMO2' => "Models",
+    'DEMO3' => "Views",
+    'DEMO4' => "Routing",
+    'DEMO5' => "Helpers",
 
-    'PRESENTATION_TITTLE' => 'Os conceitos por trás',
-    'PRESENTATION_SUBTITLE' => 'Algumas ideias básicas sobre o Framework',
-    'BANNER_TITTLE' => 'Algum título aleatório',
+    'MICRO_PHP' => 'MicroPHP',
+    'DROPDOWN' => 'Documents',
+
+    'MICRO_PHP_1' => 'Bootstrap',
+    'MICRO_PHP_2' => 'DataBase Settings',
+    'MICRO_PHP_3' => 'Navigation',
+    'MICRO_PHP_4' => 'Webpack Integration',
+    'MICRO_PHP_5' => 'Response Redirect',
+    'MICRO_PHP_6' => 'Validations',
+    'MICRO_PHP_7' => 'Twig Extensions',
+
 
 
     'PRESENTATION' => 'Simplicidade e facilidade de uso são as principais ideias sublinhadas neste framework. Começando com uma dependência mínima de apenas pacotes de árvore, guzzlehttp/psr7 psr/http-message http-interop/response-sender

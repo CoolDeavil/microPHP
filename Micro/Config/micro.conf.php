@@ -61,7 +61,7 @@ const NAV_BUILD_FILE = 'navigation.php';
 
 const RENDER_NAV = true;
 const MULTI_LANGUAGE = true;
-const TRANSLATE = false;
+const TRANSLATE = true;
 const RENDER_SIDE_NAV = false;
 
 const LOG_NAV_CONFIG = false;

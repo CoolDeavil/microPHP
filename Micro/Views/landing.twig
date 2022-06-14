@@ -15,34 +15,12 @@
         <div class="sectionSeparator"></div>
         <div class="row">
             <div class="col-12">
-                    <p> I hope you enjoy using this framework as much as I enjoyed building it. All the classes, with the exception of the render class, that extends Twig, and general concepts are mine. All was done with lots of ❤️ and available at GitHub
-                        <a href="">CoolDeavil</a></p>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <a href="">
-                    <div class="circle"></div>
-                </a>
+                <div class="circle"></div>
+                <p> I hope you enjoy using this framework as much as I enjoyed building it. All the classes, with the exception of the render class, that extends <strong>Twig</strong>, and general concepts are mine. All was done with lots of ❤️ and available at GitHub as open source public repository
+                    <a href="">CoolDeavil</a></p>
                 <p>Simplicity and ease of use are the main ideas underlined on this framework. Starting with a minimal dependency of packages, and the implementation of PHP-FIG standards.</p><p> The request is matched by the router and is processed on the pipeline then returned as a response object.  These half a dozen lines that make the index.php show this idea.</p>
-            </div>
-            <div class="col-6">
-                <a href="">
-                    <div class="mvc"></div>
-                </a>
-                <p>The code is based on the Model View Controller pattern MVC, and old but effective architecture. All controllers implement the Psr\Http\Message\MessageInterface Methods. Allowing the use in the pipeline of any other middleware implementing this standard.</p>
 
-            </div>
-{#            <div class="col-6">#}
-{#                <p>All main classes implement an interface that respects these PSR standards, like RouterInterface or SessionInterface, which makes it very easy to make changes without disturbing other classes. The router or render classes or any other could just be replaced by another. For example, the dependency injection here is based on a very simple class, MicroDI,  but it respects the PRS-11 Container interface, So, to change to a real  container like for example PHP-DI it's very easy.</p>#}
-{#            </div>#}
-
-        </div>
-        <div class="row">
-            <div class="col-12">
-<pre><code>
+                <pre><code>
 $request = ServerRequest::fromGlobals();
 $response = new Response();
 
@@ -50,6 +28,16 @@ $response = (new API\Core\App\Micro($ioc))
 ->run($request);
 Http\Response\send($response);
 </code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ asset('./images/mvc_small.jpg') }}" alt="" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <br>
+                <p>The code is based on the Model View Controller pattern MVC, and old but effective architecture. All controllers implement the Psr\Http\Message\MessageInterface Methods. Allowing the use in the pipeline of any other middleware implementing this standard.</p>
+
             </div>
         </div>
     </div>

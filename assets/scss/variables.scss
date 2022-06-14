@@ -1,8 +1,8 @@
 
 //$hero_height: 15rem;
-$hero_height: 22rem;
+$hero_height: 16rem;
 //$hero_height: 40rem;
-$hero_background: rgba(0,0,0,0.7);
+$hero_background: rgb(38, 50, 56);
 
 $side_bar_width: 12rem;
 $navigation_height: 3.5rem;
@@ -10,7 +10,7 @@ $navigation_background: #000000;
 $navigation_background_sticky: rgba(0,0,0,0.7);
 
 $app_footer_height: 3rem;
-$app_footer_background:$navigation_background_sticky;
+$app_footer_background:$hero_background;
 $app_footer_text_color: rgba(255,255,255,.7);
 $content_margin_top: 0.2rem;
 $content_padding_top: 0;

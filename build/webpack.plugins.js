@@ -27,31 +27,31 @@ exports.buildPlugs = (mode) => {
             templateContent: ({htmlWebpackPlugin}) => `${htmlWebpackPlugin.files.js.map(file => `${file}`, )}`
         }),
 
-        // new BrowserSyncPlugin({
-        //         proxy: 'http://192.168.18.18',
-        //         host: '192.168.18.18',
-        //         port: 3000,
-        //         open: false,
-        //         files: [
-        //             {
-        //                 match: [
-        //                     '**/*.php',
-        //                     '**/*.twig',
-        //                 ],
-        //                 // eslint-disable-next-line no-unused-vars
-        //                 fn: function(event, file) {
-        //                     if (event === "change") {
-        //                         const bs = require('browser-sync').get('bs-webpack-plugin');
-        //                         bs.reload();
-        //                     }
-        //                 }
-        //             }
-        //         ]
-        //     },
-        //     {
-        //         reload: true,
-        //         //reload: false
-        //     }),
+        new BrowserSyncPlugin({
+                proxy: 'http://localhost:8000',
+                host: 'localhost:8000',
+                port: 3000,
+                open: false,
+                files: [
+                    {
+                        match: [
+                            '**/*.php',
+                            '**/*.twig',
+                        ],
+                        // eslint-disable-next-line no-unused-vars
+                        fn: function(event, file) {
+                            if (event === "change") {
+                                const bs = require('browser-sync').get('bs-webpack-plugin');
+                                bs.reload();
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                reload: true,
+                //reload: false
+            }),
 
         new CopyPlugin({
             patterns:[

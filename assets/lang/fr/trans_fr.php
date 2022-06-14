@@ -9,16 +9,29 @@ $appText = [
 
 
 
-    'MICRO1' => "Domicile",
-    'MICRO2' => "Sur",
+
+    'MICRO1' => "Home",
+    'MICRO2' => "About",
     'MICRO3' => "Demos",
 
-    'DEMO1' => "Demo One",
-    'DEMO2' => "Demo Two",
-    'DEMO3' => "Demo Tree",
-    'DROPDOWN' => 'Demos',
+    'DEMO1' => "Controllers",
+    'DEMO2' => "Models",
+    'DEMO3' => "Views",
+    'DEMO4' => "Routing",
+    'DEMO5' => "Helpers",
 
+    'MICRO_PHP' => 'MicroPHP',
+    'DROPDOWN' => 'Documents',
     'TEST' => 'Trial',
+
+    'MICRO_PHP_1' => 'Bootstrap',
+    'MICRO_PHP_2' => 'DataBase Settings',
+    'MICRO_PHP_3' => 'Navigation',
+    'MICRO_PHP_4' => 'Webpack Integration',
+    'MICRO_PHP_5' => 'Response Redirect',
+    'MICRO_PHP_6' => 'Validations',
+    'MICRO_PHP_7' => 'Twig Extensions',
+
 
 
 

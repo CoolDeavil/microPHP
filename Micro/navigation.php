@@ -10,27 +10,28 @@ $userID  = 0;
 //    $userID  = (int)Session::loggedUserID();
 //    $user_avatar = Session::loggedUserAvatar();
 //}
-
-
+//
+//
 $nav->link('MICRO1', 'Micro.index', 'fa-cannabis');
-//$nav->link('MICRO2', 'checkItController.index', 'fa-cogs');
+//
+//
+$nav->drop('MICRO_PHP')
+    ->entry('MICRO_PHP_1', 'Micro.showWebPage','fa-cogs')
+    ->entry('MICRO_PHP_2', 'Micro.showWebPage','fa-star')
+    ->entry('MICRO_PHP_3', 'Micro.showWebPage','fa-cogs')
+    ->entry('MICRO_PHP_4', 'Micro.showWebPage','fa-cogs')
+    ->entry('MICRO_PHP_5', 'Micro.showWebPage','fa-cogs');
 
 $nav->drop('DROPDOWN')
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-star',['demo'=>'Models'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Views'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Routing'])
-    ->entry('DEMO3', 'Micro.showWebPage','fa-car',['demo'=>'Helpers']);
-
-$nav->drop('DROPDOWN')
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-star',['demo'=>'Models'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Views'])
-    ->entry('DEMO2', 'Micro.showWebPage','fa-cogs',['demo'=>'Routing'])
-    ->entry('DEMO3', 'Micro.showWebPage','fa-car',['demo'=>'Helpers']);
+    ->entry('DEMO1', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])
+    ->entry('DEMO2', 'Micro.showWebPage','fa-database',['demo'=>'Models'])
+    ->entry('DEMO3', 'Micro.showWebPage','fa-desktop',['demo'=>'Views'])
+    ->entry('DEMO4', 'Micro.showWebPage','fa-hospital',['demo'=>'Helpers']);
 
 $nav->admin()
     ->entry('REGISTER', 'authUserService.create', 'fa-user-plus', [],'GUEST')
     ->entry('LOG_IN', 'authUserService.index', 'fa-sign-in-alt', [],"GUEST")
     ->avatar($user_avatar, 'authUserService.show', ['id'=>$userID],"USER")
     ->entry('LOG_OUT', 'authUserService.clearSession', 'fa-sign-out-alt', [],"USER");
+
+

@@ -114,7 +114,7 @@
     font-family: Consolas,sans-serif;
     font-size: 1rem;
     font-weight: bolder;
-    color: black;
+    color: whitesmoke;
   }
 }
 
@@ -246,7 +246,7 @@
       position: absolute;
       right: 0;
       background-color: $nav_drop_back_color;
-      min-width: 160px;
+      min-width: 200px;
       line-height: 1rem;
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
       transition: opacity ease-in-out .5s;
