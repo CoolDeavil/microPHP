@@ -1,0 +1,26 @@
+<div class="appNavigation">
+    <ul class="menu">
+        <li class="disabled_">
+            <a class="">
+               <div class="navLogo" ></div>
+            </a>
+        </li>
+    </ul>
+    <ul class="menu">
+        {{ nav_links  | raw }}
+    </ul>
+    <ul class="menu admin">
+        {% if multi_language %}
+            {% include translation  %}
+        {% endif %}
+        {{ nav_admin_links | raw  }}
+    </ul>
+    <ul class="menu responsive">
+        <li>
+            <a class="lnk">
+                <span class="js_hamburger" style="font-size: 1.4rem">&#9776;</span>
+            </a>
+        </li>
+    </ul>
+
+</div>

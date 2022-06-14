@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS  `Quotes` (
+ `id` INTEGER PRIMARY KEY,
+ `author` VARCHAR ( 255 ) NOT NULL,
+ `quote` VARCHAR ( 255 ) NOT NULL,
+ `lastTimeRead` INTEGER DEFAULT 0,
+ `hitCounter` INTEGER DEFAULT 0);

@@ -1,0 +1,10 @@
+<li class="{{active}}">
+    <div class="dropdown">
+        <a class="lnk dropBtn">{{dropdownLabel}} <i class="fas fa-caret-down"></i></a>
+        <div class="dropdown-content" style="left:0;">
+            {% for link in entry %}
+                <a class="dropLnk {{link.active}}" href="{{link.link[0]}}"><i class="fas {{link.icon}}"></i> {{link.label}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</li>

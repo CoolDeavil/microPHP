@@ -1,0 +1,12 @@
+<div class="navbar-item has-dropdown is-hoverable">
+    <a class="navbar-link {{ active }}">
+        {{ dropdownLabel }}
+    </a>
+    <div class="navbar-dropdown">
+        {% for link in entry %}
+        <a href="{{ link.link[0] }}" class="navbar-item {{ link.active }}">
+            <i class="fas {{ link.icon }}"></i>&thinsp;{{ link.label }}
+        </a>
+        {% endfor %}
+    </div>
+</div>

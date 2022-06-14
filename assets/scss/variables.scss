@@ -1,0 +1,78 @@
+
+//$hero_height: 15rem;
+$hero_height: 22rem;
+//$hero_height: 40rem;
+$hero_background: rgba(0,0,0,0.7);
+
+$side_bar_width: 12rem;
+$navigation_height: 3.5rem;
+$navigation_background: #000000;
+$navigation_background_sticky: rgba(0,0,0,0.7);
+
+$app_footer_height: 3rem;
+$app_footer_background:$navigation_background_sticky;
+$app_footer_text_color: rgba(255,255,255,.7);
+$content_margin_top: 0.2rem;
+$content_padding_top: 0;
+
+
+$nav_link_text_color: rgba(255,255,255,0.7);
+$nav_link_text_hover_color: rgba(255,255,255,1);
+$nav_link_icon_color: rgb(230, 108, 13);
+$nav_link_icon_hover_color: rgb(98, 164, 88);
+$nav_link_icon_selected_color: #9af5ac;
+$nav_drop_back_color: rgba(0,0,0,.8);
+
+$red: rgb(245,255,251);
+//
+//
+//$text_color: rgba(255,255,255,0.6);
+//$text_color_hover: rgba(255,255,255,1);
+//$text_color_selected: rgba(255,255,255,1);
+//
+//
+//$iconDisplay: inline-block;
+//$iconColor: #faebd7;
+//$iconColor_hover: #14a53f;
+//$iconColor_Selected: #00ff00;
+//$drop_down_line_height: 1rem;
+//$drop_down_icon_color: #fff43d;
+//$drop_down_icon_color_hover: #0b7418;
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+//
+//// #### Skeleton SCSS ####
+//
+//$hero_height: 18rem;
+//$hero_background: transparent;
+//
+//$navigation_height: 3rem;
+//$navigation_background: #232939;
+//$navigation_background_sticky: rgba(116, 116, 116, 0.9);
+//
+//$app_footer_height: 3rem;
+//$app_footer_background:$navigation_background_sticky;
+//
+//$text_color: rgba(255,255,255,0.6);
+//$text_color_hover: rgba(255,255,255,1);
+//$text_color_selected: rgba(255,255,255,1);
+//
+//
+//$iconDisplay: inline-block;
+//$iconColor: #faebd7;
+//$iconColor_hover: #14a53f;
+//$iconColor_Selected: #00ff00;
+//
+//$content_margin_top: 0.2rem;
+//$content_padding_top: 0;

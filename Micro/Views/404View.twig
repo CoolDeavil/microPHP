@@ -1,0 +1,17 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <div class="container appContent" >
+        <div class="sectionSeparator"></div>
+        <div class="title">Error404 <small>You request was not found</small></div>
+        <hr>
+        Failed URL: <strong>{{ ip }}</strong>
+        <hr>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
+

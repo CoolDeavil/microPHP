@@ -1,0 +1,20 @@
+
+
+.circle {
+  width: 250px;
+  height: 250px;
+  background: url(../images/Onion.png);
+background-size: cover;
+float: right;
+shape-outside: circle();
+margin: 40px 20px 20px 0;
+}
+.mvc {
+  width: 150px;
+  height: 150px;
+  background: url(../images/mvc_small.jpg);
+background-size: contain;
+float: left;
+shape-outside: circle();
+margin: 40px 20px 20px 0;
+}

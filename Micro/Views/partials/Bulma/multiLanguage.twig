@@ -1,0 +1,19 @@
+<div class="navbar-item has-dropdown is-hoverable lang-dropdown">
+    <a class="navbar-link is-arrowless">
+        <img src="{{ active_flag }}" alt="" style="border-radius: 100%">
+    </a>
+    <div class="navbar-dropdown is-boxed is-right">
+        <a class="navbar-item {%if active_language == 'en'%}{{ isActive }}{%endif%}">
+            <img src="{{ asset('images/en.png') }}" alt="">
+            <span class="lang en" data-languge="en">English</span>
+        </a>
+        <a class="navbar-item {%if active_language == 'pt'%}{{ isActive }}{%endif%}">
+            <img src="{{ asset('images/pt.png') }}" alt="">
+            <span class="lang pt" data-languge="pt">Portuguese</span>
+        </a>
+        <a class="navbar-item {%if active_language == 'fr'%}{{ isActive }}{%endif%}">
+            <img src="{{ asset('images/fr.png') }}" alt="">
+            <span class="lang fr" data-languge="fr">French</span>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+
+//@import "~normalize.css";
+//@import "~purecss";
+//@import "~bulma";
+@import "~bootstrap-css-only";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,300;1,400&family=Ubuntu:ital,wght@1,300;1,400&display=swap');
+
+//
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  }
+
+
+@import "landing";
+@import "title";
