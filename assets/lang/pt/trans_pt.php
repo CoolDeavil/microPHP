@@ -32,6 +32,9 @@ $appText = [
     'MICRO_PHP_7' => 'Twig Extensions',
 
 
+    'ABOUT_P1' => 'Espero que você goste de usar este framework tanto quanto eu gostei de construí-lo. Todas as classes, com exceção da classe render, que estende o Twig, e os conceitos gerais são de CoolDeavil. Tudo foi feito com muito ❤️ e disponível em um repositório público do GitHub',
+    'ABOUT_P2' => "Simplicidade e facilidade de uso são as principais ideias sublinhadas neste framework. Começando com uma dependência mínima de pacotes e a implementação de padrões PHP-FIG.</p><p> A solicitação é correspondida pelo roteador e processada no pipeline e depois retornada como um objeto de resposta. Essas meia dúzia de linhas que compõem o index.php mostram essa ideia.",
+    'ABOUT_P3' => "O código é baseado no padrão MVC do Model View Controller e na arquitetura antiga, mas eficaz. Todos os controladores implementam os métodos Psr\Http\Message\MessageInterface. Permitindo o uso no pipeline de qualquer outro middleware que implemente este padrão.",
 
     'PRESENTATION' => 'Simplicidade e facilidade de uso são as principais ideias sublinhadas neste framework. Começando com uma dependência mínima de apenas pacotes de árvore, guzzlehttp/psr7 psr/http-message http-interop/response-sender
 O código é baseado no padrão MVC do Model View Controller e na arquitetura antiga, mas eficaz. Todos os controladores implementam os métodos Psr\Http\Message\MessageInterface. Permitindo o uso no pipeline de qualquer outro middleware que implemente este padrão

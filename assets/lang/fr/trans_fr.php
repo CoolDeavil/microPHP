@@ -39,6 +39,13 @@ $appText = [
     'PRESENTATION_TITTLE' => 'Les concepts derrière...',
     'PRESENTATION_SUBTITLE' => 'Quelques idées de base sur le Framework',
 
+
+    'ABOUT_P1' => "J'espère que vous prendrez autant de plaisir à utiliser ce framework que j'en ai eu à le construire. Toutes les classes, à l'exception de la classe de rendu, qui étend Twig, et les concepts généraux sont de CoolDeavil. Tout a été fait avec beaucoup de ❤️ et disponible sur un dépôt public GitHub",
+    'ABOUT_P2' => "La simplicité et la facilité d'utilisation sont les principales idées soulignées sur ce framework. En commençant par une dépendance minimale des packages et la mise en œuvre des normes PHP-FIG.</p><p> La requête est mise en correspondance par le routeur et est traitée sur le pipeline puis renvoyée en tant qu objet de réponse. Ces une demi-douzaine de lignes qui composent le index.php montrent cette idée.",
+    'ABOUT_P3' => "Le code est basé sur le modèle MVC de Model View Controller et sur une architecture ancienne mais efficace. Tous les contrôleurs implémentent les méthodes Psr\Http\Message\MessageInterface. Permettre l'utilisation dans le pipeline de tout autre middleware implémentant cette norme.",
+
+
+
     'PRESENTATION' => "La simplicité et la facilité d'utilisation sont les principales idées soulignées sur ce framework. En commençant par une dépendance minimale des packages arborescents, guzzlehttp/psr7 psr/http-message http-interop/response-sender
 Le code est basé sur le modèle MVC de Model View Controller et sur une architecture ancienne mais efficace. Tous les contrôleurs implémentent les méthodes Psr\Http\Message\MessageInterface. Autoriser l'utilisation dans le pipeline de tout autre middleware implémentant cette norme
 Toutes les classes principales sont basées sur des interfaces, comme RenderInterface ou RouterInterface, ce qui permet de changer très facilement la logique derrière, comme par exemple remplacer la classe de routeur personnalisée qui est livrée avec le framework par une autre comme par exemple coffeecode/router ou l'injection de dépendance par en utilisant un Container (*) plus avancé comme PHP-DI 6 ou même un composant Symphony comme DependencyInjection. Pour le système de rendu, changez-le, si vous pouvez en trouver un meilleur que Twig, le moteur de rendu que j'ai choisi pour être utilisé par microUI, et maintenant le modèle de rendu officiel pour Symphony.

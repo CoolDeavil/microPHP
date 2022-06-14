@@ -20,6 +20,16 @@ $appText = [
 
     'MICRO_PHP' => 'MicroPHP',
     'DROPDOWN' => 'Documents',
+
+
+
+    'ABOUT_P1' => 'I hope you enjoy using this framework as much as I enjoyed building it. All the classes, with the exception of the render class, that extends Twig, and general concepts are by
+                    CoolDeavil. All was done with lots of ❤️ and available on a GitHub  public repository',
+    'ABOUT_P2' => "Simplicity and ease of use are the main ideas underlined on this framework. Starting with a minimal dependency of packages, and the implementation of PHP-FIG standards.</p><p> The request is matched by the router and is processed on the pipeline then returned as a response object.  These half a dozen lines that make the index.php show this idea.",
+    'ABOUT_P3' => "The code is based on the Model View Controller pattern MVC, and old but effective architecture. All controllers implement the Psr\Http\Message\MessageInterface Methods. Allowing the use in the pipeline of any other middleware implementing this standard.",
+
+
+
     'TEST' => 'Trial',
 
     'MICRO_PHP_1' => 'Bootstrap',

@@ -16,8 +16,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="circle"></div>
-                <p> {{ trans('ABOUT_P1') }}</p>
-<p> {{ trans('ABOUT_P2') }}</p>
+                <p> I hope you enjoy using this framework as much as I enjoyed building it. All the classes, with the exception of the render class, that extends <strong>Twig</strong>, and general concepts are by
+                    <a href='/'>CoolDeavil</a>. All was done with lots of ❤️ and available on a GitHub  public <a href='/'>repository</a></p>
+                <p>Simplicity and ease of use are the main ideas underlined on this framework. Starting with a minimal dependency of packages, and the implementation of PHP-FIG standards.</p><p> The request is matched by the router and is processed on the pipeline then returned as a response object.  These half a dozen lines that make the index.php show this idea.</p>
+
                 <pre><code>
 $request = ServerRequest::fromGlobals();
 $response = new Response();
@@ -34,7 +36,7 @@ Http\Response\send($response);
             </div>
             <div class="col-8">
                 <br>
-                <p> {{ trans('ABOUT_P3') }}</p>
+                <p>The code is based on the Model View Controller pattern MVC, and old but effective architecture. All controllers implement the Psr\Http\Message\MessageInterface Methods. Allowing the use in the pipeline of any other middleware implementing this standard.</p>
 
             </div>
         </div>

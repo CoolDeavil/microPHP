@@ -51,8 +51,13 @@ class MicroController extends Controller
     {
         $params = $request->getAttribute('PARAMS');
         extract($params);
+        $view = '';
         /**@var $demo string $ */
-        $view = (string)$this->render->render('dummyForAll',['from' => $demo]);
+        if($demo === ':demo'){
+            $view = (string)$this->render->render('howToStartAuthor');
+        }else {
+            $view = (string)$this->render->render('dummyForAll',['from' => $demo]);
+        }
         $response->getBody()->write($view);
         return $response;
     }
