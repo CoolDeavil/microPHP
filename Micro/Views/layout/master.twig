@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ app_tittle }}</title>
     {{ prodScript(0) | raw  }}
-    <link rel="stylesheet" href="{{ asset('./css/main.min.css') }}">
+    <link rel="stylesheet" href="{{ style('main') }}">
 {#    <link rel="stylesheet" href="http://localhost:3000/css/main.min.css">#}
     {% block head %}
     {% endblock head %}
@@ -26,7 +26,7 @@
     <span>&#174;&emsp;Webing IT [{{ APP_MODE}}] - {{ now }} </span>
 </div>
 {{ prodScript(1) | raw  }}
-<script src="{{ asset('./js/main.min.js') }}"></script>
+<script src="{{ script('main') }}"></script>
 {#<script src="http://localhost:3000/js/main.min.js"></script>#}
 {% block scripts %}
 {% endblock scripts %}

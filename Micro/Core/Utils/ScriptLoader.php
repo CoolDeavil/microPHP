@@ -70,9 +70,26 @@ class ScriptLoader
             foreach (self::$buildAssets[$type] as $asset ){
                 if(explode('.',$asset)[0] == $name){
                     if( $type === STYLE){
-                        return   APP_ASSET_BASE . 'css/'.$asset;
+
+
+                        if (BUILD_RELEASE) {
+                            return APP_ASSET_BASE . 'css/'.$asset;
+                        } else {
+                            return DEV_SERVER_URL . 'css/'.$asset;
+                        }
+
+
+
+//                        return   APP_ASSET_BASE . 'css/'.$asset;
                     }else{
-                        return    APP_ASSET_BASE . 'js/'.$asset;
+
+                        if (BUILD_RELEASE) {
+                            return APP_ASSET_BASE .  'js/'.$asset;
+                        } else {
+                            return DEV_SERVER_URL . 'js/'.$asset;
+                        }
+
+//                        return    APP_ASSET_BASE . 'js/'.$asset;
                     }
                 }
             }

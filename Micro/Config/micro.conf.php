@@ -12,7 +12,8 @@ const SCRIPT = 1;
 
 const BUILD_RELEASE = true;
 const DEV_SERVER_PORT = 3000;
-define("DEV_SERVER_URL", "http://$_SERVER[HTTP_HOST]" . ':'.DEV_SERVER_PORT.'/');
+//define("DEV_SERVER_URL", "http://$_SERVER[HTTP_HOST]" . ':'.DEV_SERVER_PORT.'/');
+const DEV_SERVER_URL = "http://localhost" . ':' . DEV_SERVER_PORT . '/';
 
 // Include Files
 const BOOTSTRAP = 'bootstrap.php';

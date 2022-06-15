@@ -76,8 +76,8 @@ A simplicidade do arquivo index.php reflete toda a ideia por trás do framework.
 
 
     /* ERRORS */
-    'CANT_BE_EMPTY'=>'min of 6 chars are required!',
-    'MIN_LENGTH'=>'min of 6 chars are required!',
+    'CANT_BE_EMPTY'=>'min de 6 caracteres são necessários!',
+    'MIN_LENGTH'=>'minimo de 6 caracteres são necessários!',
     'NAME_REQUIRED'=>'min of 6 chars are required!',
     'NAME_MIN_LENGTH'=>'Default errorTranslation [update keys]',
     'NAME_VALIDATED'=>'Default errorTranslation [update keys]',
