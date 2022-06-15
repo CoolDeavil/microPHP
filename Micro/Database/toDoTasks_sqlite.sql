@@ -1,0 +1,9 @@
+CREATE TABLE  IF NOT EXISTS  `ToDoTasks` (
+	`id` INTEGER PRIMARY KEY,
+	`description` TEXT NOT NULL,
+	`completed` TINYINT(1) NOT NULL DEFAULT '0',
+	`dateCompleted` INT(11) NULL DEFAULT NULL,
+	`created` INT(11) NULL DEFAULT NULL,
+	`edited` INT(11) NULL DEFAULT NULL,
+	`comments` TEXT NOT NULL
+);
