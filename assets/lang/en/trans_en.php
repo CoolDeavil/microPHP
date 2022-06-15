@@ -37,7 +37,7 @@ $appText = [
     'MICRO_PHP_3' => 'Navigation',
     'MICRO_PHP_4' => 'Webpack Integration',
     'MICRO_PHP_5' => 'Response Redirect',
-    'MICRO_PHP_6' => 'Validations',
+    'MICRO_PHP_6' => 'Resource Route',
     'MICRO_PHP_7' => 'Twig Extensions',
 
 

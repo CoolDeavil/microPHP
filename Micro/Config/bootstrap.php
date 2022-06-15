@@ -7,7 +7,7 @@ use API\Core\App\{
     Dispatcher,
     Micro
 };
-use API\Controllers\{CheckItController, MicroController};
+use API\Controllers\{CheckItController, MicroController, TaskController};
 use API\Core\Database\Database;
 use API\Core\Render\{
     TwigRenderer,
@@ -25,7 +25,7 @@ use API\Middleware\{
     TrailingSlash};
 
 
-use API\Repository\{ GeneralRepository};
+use API\Repository\{GeneralRepository, ToDoTaskRepository};
 
 use GuzzleHttp\Psr7\ServerRequest;
 use Twig\{
@@ -85,7 +85,8 @@ return [
         return new MicroController(
             $router,
             $render,
-            new Validator($ioc)
+            new Validator($ioc),
+            new GeneralRepository(Database::getInstance())
         );
     },
     CheckItController::class => function ($args, ContainerInterface $ioc ){
@@ -98,6 +99,18 @@ return [
             new Validator($ioc)
         );
     },
+    TaskController::class => function ($args, ContainerInterface $ioc ){
+        extract($args);
+        /** @var $router RouterInterface */
+        /** @var $render RenderInterface */
+        return new TaskController(
+            $router,
+            $render,
+            new Validator($ioc),
+            new ToDoTaskRepository(Database::getInstance())
+        );
+    },
+
     ScriptLoader::class => function(){
         return ScriptLoader::getInstance();
     },

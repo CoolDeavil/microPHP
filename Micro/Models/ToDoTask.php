@@ -103,30 +103,6 @@ class ToDoTask
         $min      = (int) $diff->format('%i');
         $sec      = (int) $diff->format('%s');
 
-//
-//
-//
-//        dump(realpath('../'));
-//        dump('/var/www/html/application/Micro/Config/bootstrap.php');
-//
-//        $bootstrap = require_once('/var/www/html/application/Micro/Config/bootstrap.php');
-//
-////        $bootstrap = require_once(realpath('../').
-////            DIRECTORY_SEPARATOR . 'Micro'.
-////            DIRECTORY_SEPARATOR . 'Config'.
-////            DIRECTORY_SEPARATOR . 'bootstrap.php' );
-//
-
-//        echo (realpath('../').
-//            DIRECTORY_SEPARATOR . 'Micro'.
-//            DIRECTORY_SEPARATOR . 'Config'.
-//            DIRECTORY_SEPARATOR . 'bootstrap.php');
-//
-//        dump($bootstrap);
-
-//        $bootstrap = include_once APP_BOOTSTRAP;
-//        die('no container...');
-
         $ioc = MicroDI::getInstance([]);
         $tra = $ioc->get(Translate::class);
 
@@ -171,19 +147,8 @@ class ToDoTask
             }
         }
         return $timeLapse;
-
-//        return [
-//            $year,
-//            $month,
-//            $day,
-//            $hour,
-//            $min,
-//            $sec,
-//        ];
     }
-
     ## Helper Setter/Getter
-
     /**
      * @return string
      */
@@ -297,11 +262,10 @@ class ToDoTask
     public function getTaskDuration(): string
     {
         if($this->getCompleted() === 0){ return '';}
-        $diff = ToDoTask::dateDiff(
+        return ToDoTask::dateDiff(
             $this->getCreated(),
             $this->getDateCompleted()
         );
-        return $diff;
 
     }
 

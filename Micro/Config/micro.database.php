@@ -4,8 +4,8 @@
 # Type
 ########################
 //const DB_TYPE = 'memory';
-//const DB_TYPE = 'sqlite';
-const DB_TYPE = 'mysql';
+const DB_TYPE = 'sqlite';
+//const DB_TYPE = 'mysql';
 
 ########################
 # Credentials

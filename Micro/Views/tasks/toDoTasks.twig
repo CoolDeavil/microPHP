@@ -14,11 +14,11 @@
             display: flex;
             flex-direction: column;
         }
-        .fa-trash-o {
-            color: #fa6529;
+        .fa-trash {
+            color: crimson;
         }
-        .fa-eye, .fa-pencil-square-o {
-            color: #f5f5f5;
+        .fa-eye, .fa-pencil {
+            color: #3be60c;
         }
         /*.fa-eye, .fa-pencil-square-o , .fa-trash-o{}*/
 
@@ -41,10 +41,9 @@
 
 {% block content %}
     <div class="container appContent">
-        <div class="sectionSeparator"></div>
         <div class="galRow">
             <div class="col-12">
-                <div class="tittle">Resource Route<small>Create,Read,Update,Delete (CRUD)</small></div>
+                <div class="title">Resource Route<small>Create,Read,Update,Delete (CRUD)</small></div>
             </div>
         </div>
         <div class="galRow">
@@ -62,7 +61,7 @@
                         <th scope="col" colspan="2" style="text-align: center">Status</th>
                         <th scope="col">Task Details</th>
                         <th scope="col" style="text-align: right">
-                            <a href="{{ link(url('taskCRUDService.create')) }}" class="btn btn-sm btn-info"><i class="fa fa-plus" aria-hidden="true"></i>&ensp;Add New Task</a>
+                            <a href="{{ link(url('taskCRUDService.create')) }}" class="btn btn-sm btn-info"><i class="fas fa-plus" aria-hidden="true"></i>&ensp;Add New Task</a>
                         </th>
                     </tr>
                     </thead>
@@ -71,19 +70,19 @@
                         <tr>
                             <th>
                                 <a href="{{ link(url('taskCRUDService.show',{id: task.getId}) ) }}" class="btn btn-task">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fas fa-eye fa-lg"></i>
                                 </a>
                             </th>
                             <td>
                                 <a href="{{ link(url('taskCRUDService.edit',{id: task.getId}) ) }}" class="btn btn-task">
-                                    <i class="fa fa-pencil-square-o"></i>
+                                    <i class="fas fa-pencil fa-lg"></i>
                                 </a>
                             </td>
                             <td>
                                 <form class="_alertBeforePost" action='{{ link(url('taskCRUDService.destroy',{id: task.getId}) ) }}' method='post'>
                                     <input type='hidden' name='_method' value='DELETE'>
                                     <button type="submit" class="btn btn-task" onclick='this.form.submit()'>
-                                        <i class='fa fa-trash-o fa-lg'></i>
+                                        <i class='fas fa-trash fa-lg'></i>
                                     </button>
                                 </form>
 
@@ -131,23 +130,8 @@
             </div>
         </div>
         <hr>
-        <div class="galRow">
-            <div class="col-7">
-                <figure>
-                    <pre>
-<code>
-<strong>On the Controller Constructor.</strong>
-$this->router->resource('/tasks', [$this], 'taskCRUDService', true);
-<strong>On routes.php file.</strong>
-$router->resource('/tasks','TaskController', 'taskCRUDService', true);
-
-<strong>Example of usage in the front end using an helper.</strong>
-url('taskCRUDService.edit',{id:10}) => /tasks/10/edit
-</code>
-  </pre>
-                </figure>
-            </div>
-            <div class="col-5">
+        <div class="row">
+            <div class="col-6">
                 <table class="table table-hover table-sm routes">
                     <thead>
                     <tr>
@@ -208,10 +192,39 @@ url('taskCRUDService.edit',{id:10}) => /tasks/10/edit
                     </tbody>
                 </table>
             </div>
+
+            <div class="col-6">
+                <strong>On the Controller Constructor.</strong><br>
+                <code>$this->router->resource('/tasks', [$this], 'taskCRUDService', true);</code><br>
+                <strong>On routes.php file.</strong><br>
+                <code>$router->resource('/tasks','TaskController', 'taskCRUDService', true);</code><br>
+
+                <strong>Example of usage in the front end using an helper.</strong><br>
+                <code>url('taskCRUDService.edit',{id:10}) => /tasks/10/edit</code>
+            </div>
+
         </div>
         <div class="sectionSeparator"></div>
     </div>
 {% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% block scripts %}
     <script src="{{ asset('js/toDoTasks.min.js') }}"></script>

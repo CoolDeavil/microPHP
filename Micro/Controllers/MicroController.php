@@ -24,13 +24,15 @@ class MicroController extends Controller
 
     public function __construct(
         RouterInterface $router, RenderInterface $render,
-        Validator $validator
+        Validator $validator,
+        $repo
     )
     {
         parent::__construct($router, $render, $validator);
         $this->render = $render;
         $this->router = $router;
         $this->validator = $validator;
+        $this->repo = $repo;
         $this->router->post('/api/switchLang', [$this, 'switchLanguage'], 'Micro.switchLanguage');
         $this->router->get('/', [$this, 'index'], 'Micro.index');
         $this->router->get('/one-dummy-for-all/:demo', [$this, 'showWebPage'], 'Micro.showWebPage');

@@ -37,6 +37,7 @@ class TaskController extends Controller implements ResourceInterface
         $this->task = new ToDoTask();
 
         $this->router->resource('/api/tasks', $this, 'taskCRUDService', INTEGER);
+        $this->router->get('/tasks', [$this, 'index'], 'taskService.index');
 
     }
 

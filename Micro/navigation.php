@@ -20,7 +20,8 @@ $nav->drop('MICRO_PHP')
     ->entry('MICRO_PHP_2', '','fa-star')
     ->entry('MICRO_PHP_3', '','fa-cogs')
     ->entry('MICRO_PHP_4', '','fa-cogs')
-    ->entry('MICRO_PHP_5', 'Check.rawValidation','fa-cogs');
+    ->entry('MICRO_PHP_5', 'Check.rawValidation','fa-cogs')
+    ->entry('MICRO_PHP_6', 'taskService.index','fa-cogs');
 
 $nav->drop('DROPDOWN')
     ->entry('DEMO1', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])

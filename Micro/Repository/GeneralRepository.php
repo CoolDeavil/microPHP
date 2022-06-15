@@ -86,16 +86,6 @@ class GeneralRepository extends Model
         };
         $this->conn->exec($sqlData);
     }
-    public function buildAuthorTable()
-    {
-        $sqlData = match (DB_TYPE) {
-            'memory', 'sqlite' => file_get_contents(PATH_BUILD_TABLES . "table_users_sqlite.sql"),
-            'mysql' => file_get_contents(PATH_BUILD_TABLES . "table_users_mysql.sql"),
-            default => null,
-        };
-        $conn = $this->db->getConnection();
-        $conn->exec($sqlData);
-    }
     public function getMonthData(int $month, int $year) : array
     {
         $query = "select distinct cast(date as date ) as busyDate, DAY(date) as day, class, email from CalendarEvents where MONTH(date) = :month and YEAR(date) = :year;";
@@ -106,29 +96,41 @@ class GeneralRepository extends Model
         ]);
         return $stmt->fetchAll();
     }
-    public function getAllCountries() : array
+
+
+//    public function getAllCountries() : array
+//    {
+//        $query = "SELECT * FROM  Countries;";
+//        $stmt = $this->conn->prepare($query);
+//        $stmt->execute();
+//        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//    }
+//    public function getCountriesByName($country): array
+//    {
+//        $query = "SELECT * FROM  Countries where name=:name;";
+//        $stmt = $this->conn->prepare($query);
+//        $stmt->execute([
+//            'name' => $country
+//        ]);
+//        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//    }
+//    public function getCountriesByNeedle(string $needle): array
+//    {
+//        $query = "SELECT * FROM  Countries where name like '%".$needle."%' collate utf8_general_ci;";
+//        $stmt = $this->conn->prepare($query);
+//        $stmt->execute();
+//        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+//    }
+//
+    public function getAllQuotes(): array
     {
-        $query = "SELECT * FROM  Countries;";
+        $query = "select * from Quotes;";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->execute([]);
+
+        return $stmt->fetchAll(\PDO::FETCH_CLASS,Quotes::class);
     }
-    public function getCountriesByName($country): array
-    {
-        $query = "SELECT * FROM  Countries where name=:name;";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            'name' => $country
-        ]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function getCountriesByNeedle(string $needle): array
-    {
-        $query = "SELECT * FROM  Countries where name like '%".$needle."%' collate utf8_general_ci;";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+
 
 
 
