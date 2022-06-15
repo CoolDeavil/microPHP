@@ -1,0 +1,218 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('css/toDoTasks.min.css') }}">
+    <style>
+        hr {
+            border-top: 3px double #8c8b8b;
+        }
+
+        .btn-task {
+            background-color: #555555
+        }
+
+        .status {
+            display: flex;
+            flex-direction: column;
+        }
+        .fa-trash-o {
+            color: #fa6529;
+        }
+        .fa-eye, .fa-pencil-square-o {
+            color: #f5f5f5;
+        }
+        /*.fa-eye, .fa-pencil-square-o , .fa-trash-o{}*/
+
+        input.largerCheckbox
+        {
+            width: 35px;
+            height: 35px;
+        }
+
+        table.routes {
+            font-size: 0.8rem;
+            font-family: Consolas, sans-serif;
+        }
+        table {
+            font-size: 1rem;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block content %}
+    <div class="container appContent">
+        <div class="sectionSeparator"></div>
+        <div class="galRow">
+            <div class="col-12">
+                <div class="tittle">Resource Route<small>Create,Read,Update,Delete (CRUD)</small></div>
+            </div>
+        </div>
+        <div class="galRow">
+            <div class="col-12">
+                <table class="table table-hover table-sm ">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th colspan="10" style="text-align: center">Task Manager</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Show</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col" style="text-align: center">Task</th>
+                        <th scope="col" colspan="2" style="text-align: center">Status</th>
+                        <th scope="col">Task Details</th>
+                        <th scope="col" style="text-align: right">
+                            <a href="{{ link(url('taskCRUDService.create')) }}" class="btn btn-sm btn-info"><i class="fa fa-plus" aria-hidden="true"></i>&ensp;Add New Task</a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <th>
+                                <a href="{{ link(url('taskCRUDService.show',{id: task.getId}) ) }}" class="btn btn-task">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </th>
+                            <td>
+                                <a href="{{ link(url('taskCRUDService.edit',{id: task.getId}) ) }}" class="btn btn-task">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <form class="_alertBeforePost" action='{{ link(url('taskCRUDService.destroy',{id: task.getId}) ) }}' method='post'>
+                                    <input type='hidden' name='_method' value='DELETE'>
+                                    <button type="submit" class="btn btn-task" onclick='this.form.submit()'>
+                                        <i class='fa fa-trash-o fa-lg'></i>
+                                    </button>
+                                </form>
+
+                            </td>
+                            <td colspan="2"> {{ task.getDescription }}</td>
+                            <td style="text-align: center">
+                                <form action='{{ link(url('taskCRUDService.update',{id: task.getId})) }}' method='post'>
+                                    <input type='hidden' name='_method' value='PATCH'>
+                                    <input type='hidden' name='description' value='{{ task.getDescription  }}'>
+                                    <input type='hidden' name='_mode' value='UPDATE_STATUS'>
+                                    <input type='checkbox' name='completed' value='on' title='Completed' class="largerCheckbox"
+                                            {% if(task.getCompleted == 1 ) %} checked {% endif %}
+                                           onchange='this.form.submit()' aria-label="">
+                                </form>
+                            </td>
+                            <td colspan="2">
+                                <div class="status">
+                                    <div><strong>Created:</strong>
+                                        {% if(task.getTimeLine == '') %}
+                                            Moments ago...
+                                        {% else %}
+                                            {{ task.getTimeLine }} ago.
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        <strong>Edited</strong>
+                                        {% if(task.getLastEdit == '') %}
+                                            Moments ago...
+                                        {% else %}
+                                            {{ task.getLastEdit }} ago.
+                                        {% endif %}
+                                    </div>
+                                    {% if(task.getCompleted) %}
+                                    <div style="background-color:#0f8f1f;color: #eeeeee;">
+                                        <strong style="font-size: 0.8rem">COMPLETED</strong>
+                                    </div>
+                                    {% endif %}
+
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="galRow">
+            <div class="col-7">
+                <figure>
+                    <pre>
+<code>
+<strong>On the Controller Constructor.</strong>
+$this->router->resource('/tasks', [$this], 'taskCRUDService', true);
+<strong>On routes.php file.</strong>
+$router->resource('/tasks','TaskController', 'taskCRUDService', true);
+
+<strong>Example of usage in the front end using an helper.</strong>
+url('taskCRUDService.edit',{id:10}) => /tasks/10/edit
+</code>
+  </pre>
+                </figure>
+            </div>
+            <div class="col-5">
+                <table class="table table-hover table-sm routes">
+                    <thead>
+                    <tr>
+                        <th colspan="4" style="color: #006b6b">TaskController Generated Resource Routes</th>
+                    </tr>
+
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Method</th>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>GET</td>
+                        <td>/tasks</td>
+                        <td>taskCRUDService.index</td>
+                        <td>index</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/tasks/create</td>
+                        <td>taskCRUDService.create</td>
+                        <td>create</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/tasks/<strong>{id}</strong></td>
+                        <td>taskCRUDService.show</td>
+                        <td>show</td>
+                    </tr>
+                    <tr>
+                        <td>GET</td>
+                        <td>/tasks/<strong>{id}</strong>/edit</td>
+                        <td>taskCRUDService.edit</td>
+                        <td>edit</td>
+                    </tr>
+                    <tr>
+                        <td>POST</td>
+                        <td>/tasks</td>
+                        <td>taskCRUDService.store</td>
+                        <td>store</td>
+                    </tr>
+                    <tr>
+                        <td>PATCH</td>
+                        <td>/tasks/<strong>{id}</strong></td>
+                        <td>taskCRUDService.update</td>
+                        <td>update</td>
+                    </tr>
+                    <tr>
+                        <td>DELETE</td>
+                        <td>/tasks/<strong>{id}</strong></td>
+                        <td>taskCRUDService.destroy</td>
+                        <td>destroy</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="sectionSeparator"></div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{{ asset('js/toDoTasks.min.js') }}"></script>
+{% endblock scripts %}

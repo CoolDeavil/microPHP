@@ -1,0 +1,112 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+    <link rel="stylesheet" href="{{ link('css/newTask.min.css') }}">
+
+    <style>
+        .fa-chevron-circle-left {
+            color: #008b8b;
+        }
+        .fa-chevron-circle-left:hover {
+            cursor: pointer;
+            color: #008000;
+        }
+    </style>
+{% endblock head %}
+
+{% block content %}
+
+    <div class="container appContent">
+        <div class="sectionSeparator"></div>
+        <div class="galRow">
+            <div class="col-12">
+                <div class="tittle">Task Manager
+                    <small>
+                        {% if(mode=='CREATE') %}
+                            Add new Task
+                        {% elseif(mode=='EDIT') %}
+                            Edit existent Task
+                        {% elseif(mode=='SHOW') %}
+                            Show existent Task
+                        {% endif %}
+                    </small>
+                </div>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8">
+                {% if(mode != 'CREATE') %}
+                <div style="padding: 1rem;background-color: whitesmoke">
+                        {% if(task.getCompleted) %}
+                            <strong>Status:</strong>&ensp;Done&ensp;<i class="fa fa-check fa-lg" style="color: #008000"></i><br>
+                            <strong>Completed:</strong>&ensp;{{ task.getLastEdit }}&thinsp;ago.
+                            <br><strong>Duration</strong>:&ensp;{{ task.getTaskDuration }}
+                        {% else %}
+                            <strong>Status:&ensp;</strong>On Going&thinsp;<i class="fa fa-cogs fa-lg" style="color: #fa6529"></i>
+                            <br><strong>Active for:&ensp;</strong>&ensp;{{ task.getTimeLine }}.
+                        {% endif %}
+                </div>
+                {% endif %}
+
+                <form id="taskForm" action="{{ link(validation_url) }}" method="post">
+                    {% if(mode == 'EDIT') %}
+                    <input type='hidden' name='_method' value='PATCH'>
+                    <input type='hidden' name='_mode' value='UPDATE_GENERAL'>
+                    {% endif %}
+                    <div class="form-group">
+                        <label>Task Description</label>
+                        <input type="text" name="description" class="form-control"
+                               placeholder="Task description" aria-label=""
+                                {% if(mode == 'SHOW') %}
+                                    disabled
+                                {% endif %}>
+                    </div>
+                    <div class="form-group">
+                        <label>Comments</label>
+                        <textarea class="form-control" name="comments"  rows="3" aria-label=""
+                        {% if(mode == 'SHOW') %}
+                                    disabled
+                                {% endif %}></textarea>
+                    </div>
+
+                    <div class="form-group" style="display: none">
+                        <input type="number" name="id" aria-label="">
+                    </div>
+                    
+                    <div class="form-group"
+                            {% if(mode != 'SHOW') %}
+                                style="display: block"
+                            {% else %}
+                                style="display: none"
+                            {% endif %}>
+                        <input type="submit" class="btn btn-primary submit_" value="Submit">&emsp;&emsp;&emsp;
+                        <input type="button" class="btn btn-danger reset_" value="cancel">
+                        {% if(mode == 'EDIT') %}
+                            <a href="" class="btn btn-info">
+                                <i class="fa fa-plus"></i>&ensp;Progress
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-2"></div>
+            <div class="row-8">
+                <div class="col-2">
+                    <a href="{{ link(url('taskCRUDService.index')) }}" class="btn">
+                        <i class="fa fa-chevron-circle-left fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        window.formDataJson = {{ oldData | raw }};
+        window.validationErrors = {{ errors | raw }};
+    </script>
+
+    <script src="{{ link('js/newTask.min.js') }}"></script>
+{% endblock scripts %}
