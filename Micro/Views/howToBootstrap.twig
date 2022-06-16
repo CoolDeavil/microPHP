@@ -1,0 +1,154 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+
+    <style>
+        code {
+            color: #5c5c5c;
+            font-weight: bolder;
+        }
+        h5 {
+            color: #006d6d;;
+        }
+    </style>
+{% endblock head %}
+
+{% block content %}
+    <div class="container appContent" >
+        <div class="sectionSeparator"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="title">bootstrap.php<small>Setup and defaults to the Dependency Injection Container</small></div>
+                <hr>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p>The idea behind Dependency Injection is to have all the classes needed, ready to fire when matched by a route.
+                    Lets say that the controller matched need 4 dependencies, a router class, a render class, some other for validation and the repository.
+                    This makes the use of the keyword <strong>new</strong> repeatedly used and increases the lines of code you have to right and of course more error prone.</p>
+
+
+            </div>
+            <div class="col-6">
+                <p>In a dependency injection scenario the keyword  <strong>new</strong> is never used. The only place in this entire framework where the keyword <strong>new</strong>
+                    is used is here on the <code>bootstrap.php</code> Practical case for the RenderInterface. When ever the container is requested for a render interface it returns
+                    the class behind, in this case Twig, already loaded with all dependencies. To recover the class from container the method get is used as referenced in the PSR_FIG 11 for Container Interface.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <h5>Getting an interface from the container </h5>
+            </div>
+            <div class="col-6">
+                <h5>Getting a class from the container</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <code>
+$render = $dic->get(RenderInterface::class);<br>
+<br>
+RenderInterface::class => function (ContainerInterface $container) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$loader = new FilesystemLoader(APP_VIEWS);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig = new Environment($loader, [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cache' => false,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'debug' => true,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig->addExtension(new DebugExtension());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig->addExtension(new TwigRendererExtensions($container));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new TwigRenderer($loader, $twig,$container);<br>
+},
+                </code>
+
+            </div>
+            <div class="col-6">
+<code>
+$builder = $dic->get(NavBuilder::class);<br>
+<br>
+NavBuilder::class => function (ContainerInterface $container) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$router = $container->get(RouterInterface::class);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$render = $container->get(RenderInterface::class);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$translate = $container->get(Translate::class);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new NavBuilder($router, $render, $translate);<br>
+},<br>
+</code>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <h5>Declaring Controllers in the container </h5>
+    <p>The controllers what ever you name them, from Doolittle to MasterController, all must <u>extend the class Controller</u>, and so they need to feed this dependencies
+        on the parent constructor. And all modules share the same instance of both classes</p>
+                <br><code>
+MicroController::class => function ($args, ContainerInterface $ioc ){<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;extract($args);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/** @var $router RouterInterface */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/** @var $render RenderInterface */<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new MicroController(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$router,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$render,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new Validator($ioc),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new GeneralRepository(Database::getInstance())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+},<br>
+                </code>
+            </div>
+            <div class="col-5">
+                <p>On the main class Micro\Core\App\Micro during initialization  when the modules are requested from the container this dependencies are also sent for the initialization.
+                   </p>
+                <code>
+$params = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'router' => $this->router,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'render' => $this->render,<br>
+];<br>
+foreach ($pipeline as $module) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$this->modules[] = $this->ioc->get($module, $params);<br>
+}<br>
+                </code>
+            </div>
+        </div>
+        <div class="sectionSeparator"></div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+
+
+{#<div class="row">#}
+{#    <div class="col-6">#}
+{#        <p>The idea behind Dependency Injection is to have all the classes needed, ready to fire when matched by a route.#}
+{#            Lets say that the controller matched need 4 dependencies, a router class, a render class, some other for validation and the repository.#}
+{#            This makes the use of the keyword <strong>new</strong> repeatedly used and increases the lines of code you have to right and of course more error prone.</p>#}
+{#        <p>In a dependency injection scenario the keyword  <strong>new</strong> is never used. The only place in this entire framework where the keyword <strong>new</strong>#}
+{#            is used is here on the <code>bootstrap.php</code> Practical case for the RenderInterface. When ever the container is requested for a render interface it returns#}
+{#            the class behind, in this case Twig, already loaded with all dependencies. To recover the class from container the method get is used as referenced in the PSR_FIG 11 for Container Interface.</p>#}
+{#        <code>#}
+{#            $render = $dic->get(RenderInterface::class);<br>#}
+{#            <br>#}
+{#            RenderInterface::class => function (ContainerInterface $container) {<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$loader = new FilesystemLoader(APP_VIEWS);<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig = new Environment($loader, [<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'cache' => false,<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'debug' => true,<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]);<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig->addExtension(new DebugExtension());<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$twig->addExtension(new TwigRendererExtensions($container));<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new TwigRenderer($loader, $twig,$container);<br>#}
+{#            },#}
+{#        </code>#}
+{#    </div>#}
+{#    <div class="col-6">#}
+{#        <code>#}
+{#            NavBuilder::class => function (ContainerInterface $container) {<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$router = $container->get(RouterInterface::class);<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$render = $container->get(RenderInterface::class);<br>#}
+{#            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$translate = $container->get(Translate::class);<br>#}
+{#            return new NavBuilder($router, $render, $translate);<br>#}
+{#            },<br>#}
+
+{#        </code>#}
+{#    </div>#}
+{#</div>#}

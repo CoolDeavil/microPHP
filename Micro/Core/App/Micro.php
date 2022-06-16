@@ -112,14 +112,6 @@ class Micro implements RequestHandlerInterface
         $router = $this->router;
         include_once APP_ROUTES_FILE;
 
-
-
-
-//        $r = $this->router::getAllRoutes();
-//
-//        dump($r);
-//        die;
-
         $modules = include_once MODULES_PIPE;
         $pipeline = array_unique(array_merge(
             $modules,

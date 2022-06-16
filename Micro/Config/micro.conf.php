@@ -54,17 +54,17 @@ const CAPTCHA_FONT = './fonts/AnonymousClippings.ttf';
 
 //const BASE_CSS_TEMPLATES = 'Bulma';
 //const BASE_CSS_TEMPLATES = 'microPHP';
-const BASE_CSS_TEMPLATES = 'microUI';
-const ACTIVE_NAV_LINK_CLASS = 'active';
 
 define('NAV_LINKS_PATH', realpath('..'.DIRECTORY_SEPARATOR.'Micro').DIRECTORY_SEPARATOR);
 const NAV_BUILD_FILE = 'navigation.php';
 
+
+const BASE_CSS_TEMPLATES = 'microUI';
+const ACTIVE_NAV_LINK_CLASS = 'active';
 const RENDER_NAV = true;
 const MULTI_LANGUAGE = true;
 const TRANSLATE = true;
 const RENDER_SIDE_NAV = false;
-
 const LOG_NAV_CONFIG = false;
 const NAV_CONFIG_COOKIE = false;
 

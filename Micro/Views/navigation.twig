@@ -1,0 +1,78 @@
+{% extends 'layout/master.twig' %}
+{% block head %}
+{% endblock head %}
+
+{% block content %}
+    <div class="container appContent" >
+        <div class="sectionSeparator"></div>
+        <div class="row">
+            <div class="col-12">
+                <div class="title">NavBuilder<small>Navigation links Manager</small></div>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h5>Navigation Links</h5>
+                <p>MicroPHP offers a easy way to manage your navbar if you chose to use it. Its based on templating the styles and html of the CSS
+                framework you are using been it custom, bootstrap, bulma or slim... Al have specific navbar designs of links or dropdowns that can be easily templated.
+                In the Views/Partials there are already templates to use with the most popular frameworks. The settings reside on a file called navigation,
+                    next to the routes files on the root.</p>
+
+                <p>The setup resides on the navigation.php file and looks like this. </p>
+
+            </div>
+            <div class="col-6">
+
+                <code>
+
+$nav->link('MICRO1', 'Micro.index', 'fa-cannabis');<br>
+<br>
+$nav->drop('MICRO_PHP')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_1', 'Micro.bootstrap','fa-cogs')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_2', '','fa-star')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_3', 'Micro.navigation','fa-cogs')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_4', '','fa-cogs')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_5', 'Check.rawValidation','fa-cogs')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;->entry('MICRO_PHP_6', 'taskService.index','fa-cogs');<br>
+<br>
+$nav->drop('DROPDOWN')<br>
+->entry('DEMO1', 'Micro.showWebPage','fa-cogs',['demo'=>'Controllers'])<br>
+->entry('DEMO2', 'Micro.showWebPage','fa-database',['demo'=>'Models'])<br>
+->entry('DEMO3', 'Micro.showWebPage','fa-desktop',['demo'=>'Views'])<br>
+->entry('DEMO4', 'Micro.showWebPage','fa-hospital',['demo'=>'Helpers']);<br>
+<br>
+$nav->admin()<br>
+->entry('REGISTER', 'Micro.showWebPage', 'fa-user-plus', [],'GUEST')<br>
+->entry('LOG_IN', 'Micro.showWebPage', 'fa-sign-in-alt', [],"GUEST")<br>
+->avatar($user_avatar, 'authUserService.show', ['id'=>$userID],"USER")<br>
+->entry('LOG_OUT', 'authUserService.clearSession', 'fa-sign-out-alt', [],"USER");<br>
+<br>
+
+
+                </code>
+
+            </div>
+            <div class="col-6">
+                <p>There are four types of elements on the navbar, links, dropdowns, and the author and multilingual dropdown.</p>
+                <p>The entries consists of a <strong>label</strong> a <strong>route</strong> and optionally an <strong>icon</strong>.</p>
+                <p>The active link will be managed during render being always set the right active status. If in a dropdown both the label
+                    dropdown and the element receive the active class</p>
+                <p>The label translation and language dropdown are optional and can be set to false. For the author entries, of course just use if you have a login system in place.</p>
+                <small><strong>/Config/micro.conf.php</strong></small><br>
+                <code>
+BASE_CSS_TEMPLATES = 'microUI';<br>
+ACTIVE_NAV_LINK_CLASS = 'active';<br>
+RENDER_NAV = true;<br>
+MULTI_LANGUAGE = true;<br>
+TRANSLATE = true;<br>
+                </code>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}
+

@@ -36,6 +36,9 @@ class MicroController extends Controller
         $this->router->post('/api/switchLang', [$this, 'switchLanguage'], 'Micro.switchLanguage');
         $this->router->get('/', [$this, 'index'], 'Micro.index');
         $this->router->get('/one-dummy-for-all/:demo', [$this, 'showWebPage'], 'Micro.showWebPage');
+        $this->router->get('/how-to-bootstrap', [$this, 'howToBootStrap'], 'Micro.bootstrap');
+        $this->router->get('/how-nav-bar', [$this, 'navigation'], 'Micro.navigation');
+
     }
     /**
      * @param ServerRequestInterface $request
@@ -45,6 +48,20 @@ class MicroController extends Controller
     public function index(ServerRequestInterface $request, ResponseInterface $response): Response
     {
         $view = (string)$this->render->render('landing');
+        $response->getBody()->write($view);
+//        $response->getBody()->write(json_encode(['root'=> true] ));
+        return $response;
+    }
+    public function howToBootStrap(ServerRequestInterface $request, ResponseInterface $response): Response
+    {
+        $view = (string)$this->render->render('howToBootStrap');
+        $response->getBody()->write($view);
+//        $response->getBody()->write(json_encode(['root'=> true] ));
+        return $response;
+    }
+    public function navigation(ServerRequestInterface $request, ResponseInterface $response): Response
+    {
+        $view = (string)$this->render->render('navigation');
         $response->getBody()->write($view);
 //        $response->getBody()->write(json_encode(['root'=> true] ));
         return $response;

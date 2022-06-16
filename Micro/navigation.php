@@ -10,15 +10,14 @@ $userID  = 0;
 //    $userID  = (int)Session::loggedUserID();
 //    $user_avatar = Session::loggedUserAvatar();
 //}
-//
-//
+
+
 $nav->link('MICRO1', 'Micro.index', 'fa-cannabis');
-//
-//
+
 $nav->drop('MICRO_PHP')
-    ->entry('MICRO_PHP_1', '','fa-cogs')
+    ->entry('MICRO_PHP_1', 'Micro.bootstrap','fa-cogs')
     ->entry('MICRO_PHP_2', '','fa-star')
-    ->entry('MICRO_PHP_3', '','fa-cogs')
+    ->entry('MICRO_PHP_3', 'Micro.navigation','fa-cogs')
     ->entry('MICRO_PHP_4', '','fa-cogs')
     ->entry('MICRO_PHP_5', 'Check.rawValidation','fa-cogs')
     ->entry('MICRO_PHP_6', 'taskService.index','fa-cogs');
